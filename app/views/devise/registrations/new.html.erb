@@ -5,20 +5,27 @@
 
   <div class="field">
     <%= f.label :email %><br />
+    <%= devise_error_messages_email! %><br>
     <%= f.email_field :email, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= devise_error_messages_first_name! %><br>
+    <%= f.text_field :first_name%>
   </div>
 
   <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name%>
-  </div>
-  <div class="field">
     <%= f.label :last_name %><br />
+    <%= devise_error_messages_last_name! %><br>
     <%= f.text_field :last_name %>
   </div>
+
+
   <div class="field">
     <%= f.label :date_of_birth %><br />
-    <%= f.date_field :date_of_birth %>
+    <%= f.date_field :date_of_birth %><br>
+    <%= devise_error_messages_date! %>
   </div>
 
   <div class="field">
@@ -28,6 +35,7 @@
 
   <div class="field">
     <%= f.label :password %>
+    <%= devise_error_messages_password! %><br>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
