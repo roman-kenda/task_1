@@ -9,18 +9,18 @@ class User < ActiveRecord::Base
   validates :gender, inclusion: GENDERS
   validates :password, length: { minimum: 10 }
   validate  :valid_date?
-  #validate  :valid_password? 
+  validate  :valid_password? 
     
   def valid_password?
     upper = 'A'..'Z'
     lower = 'a'..'z'
-    count = []
+    count = [0, 0, 0]
     self.password.each_char do |ch|
       count[0] += 1 if upper.include? ch
       count[1] += 1 if lower.include? ch
       count[2] += 1 if is_integer? ch     
     end
-    errors.add(:password, :invalid) unless count[0] >= 2 && count[1] >= 2 && c >= 2  
+    errors.add(:password, :invalid) unless count[0] >= 2 && count[1] >= 2 && count[2] >= 2  
   end
 
 
@@ -35,5 +35,5 @@ class User < ActiveRecord::Base
 
 end
 
-# QWErty123456
-# 1234567890
+# QWErty123456   true
+# 1234567890     false 

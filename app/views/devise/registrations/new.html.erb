@@ -3,52 +3,51 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= devise_error_messages_email! %><br>
-    <%= f.email_field :email, autofocus: true %>
+  <div class="form-group">
+    <%= f.email_field :email, autofocus: true, placeholder: :email %>
+    <font class="text-danger"><%= devise_error_messages_email! %></font><br>
   </div>
+
   
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= devise_error_messages_first_name! %><br>
-    <%= f.text_field :first_name%>
+  <div class="form-group">
+    <%= f.text_field :first_name, placeholder: :first_name%>
+    <font class="text-danger"><%= devise_error_messages_first_name! %></font><br>
   </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= devise_error_messages_last_name! %><br>
-    <%= f.text_field :last_name %>
+  <div class="form-group">
+    <%= f.text_field :last_name, placeholder: :last_name %>
+    <font class="text-danger"><%= devise_error_messages_last_name! %></font><br>
   </div>
 
 
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
+  <div class="form-group">
+    <%= f.label :date_of_birth %><br>
     <%= f.date_field :date_of_birth %><br>
-    <%= devise_error_messages_date! %>
+    <font class="text-danger"><%= devise_error_messages_date! %></font> 
   </div>
 
-  <div class="field">
+  <div class="dropdown">
     <%= f.label :gender %><br />
     <%= f.select :gender, User::GENDERS %>
   </div>
 
-  <div class="field">
+
+  <div class="form-group">
     <%= f.label :password %>
-    <%= devise_error_messages_password! %><br>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
+    <font class="text-danger"><%= devise_error_messages_password! %></font><br>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="form-group">
+    <%= f.submit "Sign up", class: "btn btn-default" %>
   </div>
 <% end %>
 
