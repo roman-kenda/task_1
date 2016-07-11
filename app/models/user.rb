@@ -1,17 +1,19 @@
 class User < ActiveRecord::Base
+  #before_validation :valid_password
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   
   GENDERS = ['man', 'woman']
   validates :first_name, :last_name,  :password, :date_of_birth, :gender, presence: true
   validates :gender, inclusion: GENDERS
   validates :password, length: { minimum: 10 }
   validate  :valid_date?
-  validate  :valid_password? 
+  validate  :valid_password
     
-  def valid_password?
+  def valid_password
     upper = 'A'..'Z'
     lower = 'a'..'z'
     count = [0, 0, 0]
