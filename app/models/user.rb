@@ -7,11 +7,13 @@ class User < ActiveRecord::Base
 
   
   GENDERS = ['man', 'woman']
-  validates :first_name, :last_name,  :password, :date_of_birth, :gender, presence: true
+  validates :first_name, :last_name,  :password, :gender, presence: true
   validates :gender, inclusion: GENDERS
   validates :password, length: { minimum: 10 }
   #validate  :valid_date?
   validate  :valid_password
+
+  has_many :pictures, dependent: :destroy
     
   def valid_password
     upper = 'A'..'Z'

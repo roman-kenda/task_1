@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pictures
   get 'pages/dashboard', as: "dshboard"
 
   devise_for :users, controllers:  { registrations: 'users/registrations' }#, skip: [registrations: 'users/registrations#edit']

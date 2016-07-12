@@ -26,6 +26,7 @@ gem 'devise'
 gem 'better_errors'
 gem 'bootstrap-sass'
 gem 'carrierwave'
+gem 'mini_magick', '~> 4.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
