@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name,  :password, :date_of_birth, :gender, presence: true
   validates :gender, inclusion: GENDERS
   validates :password, length: { minimum: 10 }
-  validate  :valid_date?
+  #validate  :valid_date?
   validate  :valid_password
     
   def valid_password
@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
   end
 
 
-  def valid_date?
-    interval = Date.today.prev_year(60)..Date.today.next_year(60)
-    errors.add(:date_of_birth, :invalid) unless interval.include? self.date_of_birth
-  end
+  #def valid_date?
+  #  interval = Date.today.prev_year(60)..Date.today.next_year(60)
+  #  errors.add(:date_of_birth, :invalid) unless interval.include? self.date_of_birth
+  #end
 
   def is_integer?(string)
     true if Integer(string) rescue false
