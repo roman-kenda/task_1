@@ -30,10 +30,12 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-        format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
-        format.js
-        format.json { render :show, status: :created, location: @picture }
+    #    render json: { message: 'success', imageId: @picture.id }, status: 200
+         format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
+         format.js
+         format.json { render :show, status: :created, location: @picture }
       else
+        render nothing: true, status: 400
         format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end

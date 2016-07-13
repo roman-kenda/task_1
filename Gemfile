@@ -27,6 +27,8 @@ gem 'better_errors'
 gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.5'
+gem 'file_validators'
+#gem 'dropzonejs-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
