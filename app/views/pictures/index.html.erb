@@ -2,8 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= render 'form' %>
-
+<%= render 'form' %><br>
+<%= will_paginate @pictures, renderer: BootstrapPagination::Rails%>
 <div class="pictures">
 
     <% @pictures.each do |picture| %>

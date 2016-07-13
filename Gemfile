@@ -28,6 +28,8 @@ gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'mini_magick', '~> 4.5'
 gem 'file_validators'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap', '~> 1.0'
 #gem 'dropzonejs-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
