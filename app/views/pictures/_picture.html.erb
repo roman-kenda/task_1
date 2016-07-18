@@ -1,9 +1,10 @@
 <div class="picture">
   <%= image_tag picture.image_url(:thumb), class: "img-thumbnail" if picture.image? %><br>
-  200x200|
+  <%= 200 %>x200|
   <%= picture.name %>|
   <%= picture.extension %>|
   <%= picture.image.content_type %>|
   <%= picture.size %> Mb|
-  <%= picture.user.first_name %><br>
+  <%= picture.user.first_name %>
+  <%= link_to 'del', picture, method: :delete %><br>
 </div>

@@ -6,7 +6,7 @@ class Picture < ActiveRecord::Base
   before_validation :default_name, :default_extension, :default_size
 
   def default_name
-    self.name = token_url(self.image_url)[1].split('/')[0].reverse
+    self.name = token_url(self.image_url)[1].split('/')[0].reverse.titleize
   end
 
   def default_extension

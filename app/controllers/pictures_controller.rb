@@ -6,7 +6,6 @@ class PicturesController < ApplicationController
   # GET /pictures.json
   def index
     @pictures = Picture.order('created_at DESC').paginate(page: params[:page], per_page: 10)
-    @picture = Picture.new
   end
 
   # GET /pictures/1
@@ -30,12 +29,10 @@ class PicturesController < ApplicationController
 
     respond_to do |format|
       if @picture.save
-    #    render json: { message: 'success', imageId: @picture.id }, status: 200
-         format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
+         format.html { redirect_to pictures_path, notice: 'Picture was successfully created.'}
          format.js
          format.json { render :show, status: :created, location: @picture }
       else
-      #  render nothing: true, status: 400
         format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end
@@ -47,7 +44,7 @@ class PicturesController < ApplicationController
   def update
     respond_to do |format|
       if @picture.update(picture_params)
-        format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
+        format.html { redirect_to @picture, notice: 'Picture was successfully updated.'}
         format.json { render :show, status: :ok, location: @picture }
       else
         format.html { render :edit }
@@ -61,7 +58,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     respond_to do |format|
-      format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
+      format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.'}
       format.json { head :no_content }
     end
   end
