@@ -5,23 +5,6 @@
 <%= render 'form' %><br>
 <%= will_paginate @pictures, renderer: BootstrapPagination::Rails%>
 <div class="pictures">
-
-    <% @pictures.each do |picture| %>
-      <div class="picture">
-        <%= image_tag picture.image_url(:thumb), class: "img-thumbnail" if picture.image? %><br>
-        200x200|
-        <%= name picture.image_url %>|
-        <%= extension picture.image_url %>|
-        <%= picture.image.content_type %>|
-        <%= human_size picture.image.size.to_f %> Mb|
-        <%= picture.user.first_name %><br>
-        <%= link_to 'Show', picture %>
-        <%= link_to 'Edit', edit_picture_path(picture) %>
-        <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
-    <% end %>
-
+  <%= render @pictures %>
 </div>
 <br>
-
-<%#= link_to 'New Picture', new_picture_path %>
