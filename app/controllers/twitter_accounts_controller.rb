@@ -16,6 +16,7 @@ class TwitterAccountsController < ApplicationController
   end
 
   def destroy
+    puts "ASDASDASD"
     current_user.twitter_account.destroy
     respond_to do |format|
       format.html { redirect_to setting_of_twitter_path,

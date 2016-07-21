@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'pages/setting_of_twitter', as: "setting_of_twitter"
 
   get '/auth/:provider/callback', to: 'twitter_accounts#create'
-  #delete 'pages/setting_of_twitter' => 'twitter_accounts#delete'
+  delete 'pages/setting_of_twitter' => 'twitter_accounts#destroy'
   # You can have the root of your site routed with "root"
   root 'pages#dashboard'
 

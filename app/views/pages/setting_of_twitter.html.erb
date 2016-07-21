@@ -6,4 +6,5 @@
 
 <%= current_user.first_name%>,<%= current_user.twitter_account.uid if current_user.twitter_account  %>!<br>
 <a href="/auth/twitter">Twitter</a><br>
-<%= link_to "Disconnect Twitter Account", 'pages/setting_of_twitter', method: :delete, confirm: "Are you sure?" %>
+
+<%= link_to "Disconnect Twitter Account", '/pages/setting_of_twitter', method: :delete, confirm: "Are you sure?" %>
