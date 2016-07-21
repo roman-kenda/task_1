@@ -10,10 +10,11 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name,  :password, :gender, presence: true
   validates :gender, inclusion: GENDERS
   validates :password, length: { minimum: 10 }
+  before_create  :valid_password
   #validate  :valid_date?
-  validate  :valid_password
 
   has_many :pictures, dependent: :destroy
+  has_one :twitter_account, dependent: :destroy
     
   def valid_password
     upper = 'A'..'Z'
@@ -27,7 +28,6 @@ class User < ActiveRecord::Base
     errors.add(:password, :invalid) unless count[0] >= 2 && count[1] >= 2 && count[2] >= 2  
   end
 
-
   #def valid_date?
   #  interval = Date.today.prev_year(60)..Date.today.next_year(60)
   #  errors.add(:date_of_birth, :invalid) unless interval.include? self.date_of_birth
@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
   def is_integer?(string)
     true if Integer(string) rescue false
   end
-
 end
 
 # QWErty123456   true

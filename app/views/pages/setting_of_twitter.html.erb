@@ -1,0 +1,9 @@
+<h1>Настройки твиттера</h1>
+
+<%if notice%>
+  <div class="<%= type_message notice %>"><%= notice %></div><br>
+<% end %>
+
+<%= current_user.first_name%>,<%= current_user.twitter_account.uid if current_user.twitter_account  %>!<br>
+<a href="/auth/twitter">Twitter</a><br>
+<%= link_to "Disconnect Twitter Account", 'pages/setting_of_twitter', method: :delete, confirm: "Are you sure?" %>

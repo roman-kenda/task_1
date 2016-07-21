@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :pictures
-  get 'pages/dashboard', as: "dshboard"
-
+ 
   devise_for :users, controllers:  { registrations: 'users/registrations' }#, skip: [registrations: 'users/registrations#edit']
-  
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-  
+ 
+  resources :pictures#, only: [:create, :destroy]
+  #resources :twitter_accounts, only: [:create, :destroy]
+  get 'pages/dashboard', as: "dshboard"
+  get 'pages/setting_of_twitter', as: "setting_of_twitter"
 
+  get '/auth/:provider/callback', to: 'twitter_accounts#create'
+  #delete 'pages/setting_of_twitter' => 'twitter_accounts#delete'
   # You can have the root of your site routed with "root"
   root 'pages#dashboard'
 
