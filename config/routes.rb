@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers:  { registrations: 'users/registrations' }#, skip: [registrations: 'users/registrations#edit']
  
   resources :pictures#, only: [:create, :destroy]
-  #resources :twitter_accounts, only: [:create, :destroy]
+
   get 'pages/dashboard', as: "dshboard"
   get 'pages/setting_of_twitter', as: "setting_of_twitter"
 
   get '/auth/:provider/callback', to: 'twitter_accounts#create'
   delete 'pages/setting_of_twitter' => 'twitter_accounts#destroy'
+  
   # You can have the root of your site routed with "root"
   root 'pages#dashboard'
 

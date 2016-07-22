@@ -8,19 +8,18 @@ class TwitterAccountsController < ApplicationController
                                                           secret: auth.credentials.secret)
     respond_to do |format|
       if @twitter_account.save
-        format.html { redirect_to setting_of_twitter_path, notice: 'Your twitter connect.'}
+        format.html { redirect_to setting_of_twitter_path, notice: 'Your twitter account was connected.'}
       else
-        format.html { redirect_to setting_of_twitter_path, notice: 'Your twitter disconnect.'}
+        format.html { redirect_to setting_of_twitter_path, notice: 'Your twitter account wasn\'t connected.'}
       end
     end
   end
 
   def destroy
-    puts "ASDASDASD"
     current_user.twitter_account.destroy
     respond_to do |format|
       format.html { redirect_to setting_of_twitter_path,
-                    notice: 'Your twitter account was successfully destroyed.'}
+                    notice: 'Your twitter account was successfully disconnected.'}
     end
   end
 end
