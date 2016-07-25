@@ -2,7 +2,14 @@
   <%= link_to "#{tweet.twitter_account.user.first_name}", tweet.twitter_account.link %>
   <div><%= tweet.body %></div>
   <%= tweet.picture %>
-  <%= tweet.created_at.to_date %>|
+  <strong>Created:</strong> <%= tweet.created_at %><br>
+
+  <% if tweet.was_send %>
+    <strong>Date send:</strong><%= tweet.date_send %>
+    <div class="text-success">Отправлено!</div>
+  <% else %>
+    <div class="text-danger">Не отправлено!</div>
+  <% end %>
   <%= link_to 'delete', tweet, method: :delete, data: {confirm: 'Are you sure?'} %>
 </div>
 <hr>

@@ -25,9 +25,11 @@ class TweetsController < ApplicationController
   # POST /tweets.json
   def create
     @tweet = current_user.twitter_account.tweets.new(tweet_params)
+    
 
     respond_to do |format|
       if @tweet.save
+        SendingTweetsWorker.perform_later(@tweet)
         format.html { redirect_to tweets_url, notice: 'Tweet was successfully created.'}
         format.js
         format.json { render :show, status: :created, location: @tweet }
