@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  resources :tweets
   devise_for :users, controllers:  { registrations: 'users/registrations' }#, skip: [registrations: 'users/registrations#edit']
  
   resources :pictures#, only: [:create, :destroy]

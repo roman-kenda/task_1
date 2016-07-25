@@ -1,0 +1,25 @@
+<h1>Tweets</h1>
+
+<%if notice%>
+  <div class="<%= type_message notice %>"><%= notice %></div>
+<% end %>
+
+<%= form_for Tweet.new do |f| %>
+  <div class="field">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, rows: 5, class: "form-control" %>
+  </div>
+  <!--
+  <div class="field">
+    <%#= f.label :picture %><br>
+    <%#= f.select(:picture, Picture.all.each{|p|  p.image_url(:thumb)}) %>
+  </div> -->
+  <%= button_to "Отправить", @tweet, method: :create, remote: true, class: "btn btn-primary" %>
+<% end %>
+
+<%= will_paginate @tweets, renderer: BootstrapPagination::Rails%>
+<br>
+
+<div id="tweets">
+  <%= render @tweets %>
+</div>
