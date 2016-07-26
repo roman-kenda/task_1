@@ -3,8 +3,5 @@
 <%if notice%>
   <div class="<%= type_message notice %>"><%= notice %></div><br>
 <% end %>
-
-<%= current_user.first_name%>,<%= current_user.twitter_account.uid if current_user.twitter_account  %>!<br>
-
-<%= link_to 'Connect Twitter Account', "/auth/twitter" %><br>
-<%= link_to "Disconnect Twitter Account", '/pages/setting_of_twitter', method: :delete, confirm: "Are you sure?" %>
+<%= link_to "#{name_link_twitter}", "/auth/twitter"  unless current_user.twitter_account %>
+<%= link_to "Disconnect Twitter Account", '/pages/setting_of_twitter', method: :delete, confirm: "Are you sure?" if user_signed_in? && current_user.twitter_account %><br>

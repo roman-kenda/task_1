@@ -1,5 +1,6 @@
 class Tweet < ActiveRecord::Base
   belongs_to :twitter_account
+  belongs_to :picture
   #before_create :post_to_twitter
 
   #def post_to_twitter

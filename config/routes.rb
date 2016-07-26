@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
  
+  devise_for :users, controllers:  { registrations: 'users/registrations'} #,
+                                    # omniauth_callbacks: 'users/omniauth_callbacks'}
   resources :tweets
-  devise_for :users, controllers:  { registrations: 'users/registrations' }#, skip: [registrations: 'users/registrations#edit']
- 
-  resources :pictures#, only: [:create, :destroy]
+  resources :pictures
 
   get 'pages/dashboard', as: "dshboard"
   get 'pages/setting_of_twitter', as: "setting_of_twitter"

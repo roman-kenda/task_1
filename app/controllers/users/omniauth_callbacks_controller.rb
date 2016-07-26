@@ -3,8 +3,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  # def twitter
-  # end
+  #def twitter
+  #  raise :test#auth_hash
+    #redirect_to pictures_path
+  #end
 
   # More info at:
   # https://github.com/plataformatec/devise#omniauth
@@ -19,7 +21,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   super
   # end
 
-  # protected
+  #protected
+
+  #def auth_hash
+  #  request.env['omniauth.auth']
+  #end
 
   # The path used when OmniAuth fails
   # def after_omniauth_failure_path_for(scope)

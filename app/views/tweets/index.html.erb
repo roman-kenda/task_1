@@ -11,8 +11,8 @@
   </div>
   <!--
   <div class="field">
-    <%#= f.label :picture %><br>
-    <%#= f.select(:picture, Picture.all.each{|p|  p.image_url(:thumb)}) %>
+    <%#= f.label :picture_id %><br>    
+    <%#= f.select( :picture_id, Picture.all.map{|p| [ p.name, p.id, :title => p.image_url(:thumb)] }) %>
   </div> -->
   <%= button_to "Отправить", @tweet, method: :create, remote: true, class: "btn btn-primary" %>
 <% end %>

@@ -1,7 +1,11 @@
 <div id="tweet">
   <%= link_to "#{tweet.twitter_account.user.first_name}", tweet.twitter_account.link %>
   <div><%= tweet.body %></div>
-  <%= tweet.picture %>
+
+  <% if tweet.picture %>
+    <div><%= image_tag tweet.picture.image_url(:thumb) %></div>
+  <% end %>
+
   <strong>Created:</strong> <%= tweet.created_at %><br>
 
   <% if tweet.was_send %>

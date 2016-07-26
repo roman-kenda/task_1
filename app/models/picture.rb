@@ -2,6 +2,7 @@ class Picture < ActiveRecord::Base
   mount_uploader :image, ImageUploader
     
   belongs_to :user
+  has_many :tweets
 
   before_validation :default_name, :default_extension, :default_size
 
