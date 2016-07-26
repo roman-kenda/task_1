@@ -30,8 +30,8 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if @tweet.save
         SendingTweetsWorker.perform_later(@tweet)
-        format.html { redirect_to tweets_url, notice: 'Tweet was successfully created.'}
         format.js
+        format.html { redirect_to tweets_url, notice: 'Tweet was successfully created.'}
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new }
