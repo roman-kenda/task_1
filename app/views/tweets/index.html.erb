@@ -4,20 +4,7 @@
   <div class="<%= type_message notice %>"><%= notice %></div>
 <% end %>
 
-<%= form_for Tweet.new, remote: true do |f| %>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body, rows: 5, class: "form-control" %>
-  </div>
-  <!--
-  <div class="field">
-    <%#= f.label :picture_id %><br>    
-    <%#= f.select( :picture_id, Picture.all.map{|p| [ p.name, p.id, :title => p.image_url(:thumb)] }) %>
-  </div> -->
-  <div class="actions">
-  <%= f.submit %>
-  </div>
-<% end %>
+<%= render 'form' %>
 
 <%= will_paginate @tweets, renderer: BootstrapPagination::Rails%>
 <br>

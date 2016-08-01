@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
         format.html { redirect_to tweets_url, notice: 'Tweet was successfully created.'}
         format.json { render :show, status: :created, location: @tweet }
       else
-        format.html { render :new }
+        format.html { redirect_to tweets_url}
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
@@ -72,6 +72,6 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:body, :picture)
+      params.require(:tweet).permit(:body, :picture_id)
     end
 end

@@ -1,14 +1,34 @@
-<%= form_for Tweet.new do |f| %>
+<%= form_for @tweet = Tweet.new do |f| %>
+
+  <% if @tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :body %><br>
     <%= f.text_area :body, rows: 5, class: "form-control" %>
+    <span id="charsLeft"></span>&nbsp;знаков осталось. 
   </div>
-  <!--
+
   <div class="field">
-    <%#= f.label :picture %><br>
-    <%#= f.select(:picture, Picture.all.each{|p|  p.image_url(:thumb)}) %>
-  </div> -->
+    <%= f.label :picture %>
+    <%= f.collection_select :picture_id, Picture.all, :id, :name,{include_blank: true}, {:class => "btn btn-default dropdown-toggle"} %>
+  </div>
   <div class="actions">
-    <%= button_to "Отправить", @tweet, method: :create, remote: true, class: "btn btn-primary" %>
+    <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">     
+$(document).ready(function(){       
+$('textarea').limit('140','#charsLeft');      
+});   
+</script> 

@@ -1,9 +1,12 @@
 class Tweet < ActiveRecord::Base
+  include Twitter::Validation
+
   belongs_to :twitter_account
   belongs_to :picture
-  #before_create :post_to_twitter
 
-  #def post_to_twitter
-  #  twitter_account.twitter.update(body)
-  #end
+  validate :error_tweet_invalid
+
+  def error_tweet_invalid
+   errors.add(:body, :invalid) if tweet_invalid? self.body
+  end
 end

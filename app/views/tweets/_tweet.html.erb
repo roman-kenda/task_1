@@ -6,10 +6,10 @@
     <div><%= image_tag tweet.picture.image_url(:thumb) %></div>
   <% end %>
 
-  <strong>Created:</strong> <%= tweet.created_at %><br>
+  <strong>Created:</strong> <%= time_tag(tweet.created_at) %><br>
 
   <% if tweet.was_send %>
-    <strong>Date send:</strong><%= tweet.date_send %>
+    <strong>Date send:</strong> <%= time_tag(tweet.date_send) %>
     <div class="text-success">Отправлено!</div>
   <% else %>
     <div class="text-danger">Не отправлено!</div>

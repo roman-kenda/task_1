@@ -15,7 +15,7 @@ class Picture < ActiveRecord::Base
   end
 
   def default_size
-    self.size = (self.image.size.to_f / 1000000).round(2)
+    self.size = self.image.size
   end
 
   private
