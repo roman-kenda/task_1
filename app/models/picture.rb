@@ -4,23 +4,20 @@ class Picture < ActiveRecord::Base
   belongs_to :user
   has_many :tweets
 
-  before_validation :default_name, :default_extension, :default_size
+  validate :valid_image_extension
+  validate :valid_image_size
+
+  after_validation :default_name
+
+  def valid_image_extension
+    errors.add(:image, :invalid) unless /\.(jpg|jpeg|png)$/.match self.image_url 
+  end
+
+  def valid_image_size
+    errors.add(:image, :invalid) if self.image.size > 5.megabyte
+  end
 
   def default_name
-    self.name = token_url(self.image_url)[1].split('/')[0].reverse.titleize
-  end
-
-  def default_extension
-    self.extension = token_url(self.image_url)[0].reverse
-  end
-
-  def default_size
-    self.size = self.image.size
-  end
-
-  private
-
-  def token_url(url)
-    url.reverse.split('.', 2)
+    self.name = self.image_url.reverse.split('.', 2)[1].split('/')[0].reverse.titleize
   end
 end

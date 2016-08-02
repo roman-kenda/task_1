@@ -265,6 +265,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   sidekiq
+  sinatra
   turbolinks
   twitter
   twitter-text (~> 1.14)

@@ -1,1 +1,2 @@
-$('#pictures').html("<%= escape_javascript render(@pictures) %>")
+$('#errors').append("<%= escape_javascript render 'errors' %>")
+$('#pictures').prepend("<%= escape_javascript render(@picture) %>")

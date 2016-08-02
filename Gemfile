@@ -39,6 +39,7 @@ gem 'omniauth'
 gem 'omniauth-twitter', '~> 1.2'
 
 gem 'sidekiq'
+gem 'sinatra', :require => false
 gem 'twitter-text', '~> 1.14'
 #gem 'sinatra', require: false
 

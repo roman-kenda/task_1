@@ -33,6 +33,7 @@ class PicturesController < ApplicationController
          format.js
          format.json { render :show, status: :created, location: @picture }
       else
+        format.js
         format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end

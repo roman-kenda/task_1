@@ -1,10 +1,11 @@
 <div class="picture">
   <%= image_tag picture.image_url(:thumb), class: "img-thumbnail" if picture.image? %><br>
-  <%= 200 %>x200|
+  <%= MiniMagick::Image.open(picture.image.thumb.file.file).width %> x
+  <%= MiniMagick::Image.open(picture.image.thumb.file.file).height %>|
   <%= picture.name %>|
-  <%= picture.extension %>|
+  <%= MiniMagick::Image.open(picture.image.file.file).type %>|
   <%= picture.image.content_type %>|
-  <%= number_to_human_size picture.size %>|
+  <%= number_to_human_size picture.image.size %>|
   <%= picture.user.first_name %>
-  <%= link_to 'del', picture, method: :delete %><br>
+  <%= link_to 'del', picture, method: :delete %><br>  
 </div>
